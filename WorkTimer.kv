@@ -1,0 +1,22 @@
+
+<WorkTimerGrid>:
+    mainLabel : mainLabel
+    id : wk
+    
+    cols: 1
+    size : root.width, root.height
+
+    Label:
+        id: mainLabel
+        text: "Press Start"
+
+    GridLayout:
+        cols:2
+    
+        Button:
+            text: "Start"
+            on_press: wk.start()
+
+        Button:
+            text: "Stop"
+            on_press: wk.stop()
