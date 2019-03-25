@@ -1,3 +1,8 @@
+import sys, os
+if sys.executable.endswith("pythonw.exe"):
+  sys.stdout = open(os.devnull, "w")
+  sys.stderr = open(os.path.join(os.getenv("TEMP"), "stderr-"+os.path.basename(sys.argv[0])), "w")
+
 import time
 from kivy.app import App
 
@@ -9,7 +14,6 @@ from kivy.clock import Clock
 
 from kivy.properties import NumericProperty
 from kivy.properties import ObjectProperty
-
 
 class WorkTimerGrid(GridLayout):
     mainLabel = ObjectProperty(None)
@@ -32,7 +36,6 @@ class WorkTimerApp(App):
         return WorkTimerGrid()
 
     def stop(self, *largs):
-        print("Closing !")
         f = open("Work_logs.txt","r")
         lines = f.read().splitlines()
         last_line = lines[-1]
